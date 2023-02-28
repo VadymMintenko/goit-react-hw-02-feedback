@@ -1,8 +1,8 @@
-export const Section = () => {
+export const Section = ({ title, children }) => {
   return (
     <div>
-      <h2>Pleace leave feedback</h2>
-      <h3>Statistics</h3>
+      <h2>{title}</h2>
+      {children}
     </div>
   );
 };

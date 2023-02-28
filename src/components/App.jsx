@@ -1,15 +1,20 @@
 import React from 'react';
 import { FeedBack } from './FeedBack';
 import { Section } from './Section';
+import { Statistics } from './Statistics';
+import { Notification } from './Notification';
+import { Container } from './Container.styled';
 
 export class App extends React.Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
+    render: false,
   };
 
   changeStatistic = evt => {
+    this.state.render = true;
     this.setState(prevState => ({
       [evt]: prevState[evt] + 1,
     }));
@@ -24,21 +29,27 @@ export class App extends React.Component {
 
   countPositiveFeedbackPercentage = () => {
     const procents = (this.state.good / this.countTotalFeedback()) * 100;
-    console.log(procents);
+
     return procents.toFixed();
   };
 
   render() {
     return (
-      <div>
-        <Section></Section>
-        <FeedBack
-          state={this.state}
-          onClick={this.changeStatistic}
-          total={this.countTotalFeedback()}
-          procents={this.countPositiveFeedbackPercentage()}
-        />
-      </div>
+      <Container>
+        <Section title="Pleace leave feedback">
+          <FeedBack onClick={this.changeStatistic} />
+          {!this.state.render && (
+            <Notification message={'There is no feedback'} />
+          )}
+          {this.state.render && (
+            <Statistics
+              state={this.state}
+              total={this.countTotalFeedback()}
+              procents={this.countPositiveFeedbackPercentage()}
+            />
+          )}
+        </Section>
+      </Container>
     );
   }
 }
