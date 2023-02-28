@@ -14,12 +14,12 @@ export class App extends React.Component {
   };
 
   changeStatistic = evt => {
-    this.state.render = true;
     this.setState(prevState => ({
       [evt]: prevState[evt] + 1,
     }));
     this.countTotalFeedback();
     this.countPositiveFeedbackPercentage();
+    this.state.render = true;
   };
 
   countTotalFeedback = () => {
