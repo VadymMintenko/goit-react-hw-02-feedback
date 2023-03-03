@@ -19,7 +19,7 @@ export class App extends React.Component {
     }));
     this.countTotalFeedback();
     this.countPositiveFeedbackPercentage();
-    this.state.render = true;
+    this.setState({ render: true });
   };
 
   countTotalFeedback = () => {
