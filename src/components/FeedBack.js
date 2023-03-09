@@ -1,5 +1,5 @@
 import { Button } from './FeedBack.styled';
-
+import PropTypes from 'prop-types';
 export const FeedBack = ({ onClick }) => {
   return (
     <div>
@@ -14,4 +14,8 @@ export const FeedBack = ({ onClick }) => {
       </Button>
     </div>
   );
+};
+
+FeedBack.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
