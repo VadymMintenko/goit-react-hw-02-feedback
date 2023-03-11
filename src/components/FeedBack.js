@@ -1,21 +1,18 @@
 import { Button } from './FeedBack.styled';
 import PropTypes from 'prop-types';
-export const FeedBack = ({ onClick }) => {
+export const FeedBack = ({ onClick, options }) => {
   return (
     <div>
-      <Button type="button" onClick={() => onClick('good')}>
-        Good
-      </Button>
-      <Button type="button" onClick={() => onClick('neutral')}>
-        Neutral
-      </Button>
-      <Button type="button" onClick={() => onClick('bad')}>
-        Bad
-      </Button>
+      {options.map(option => (
+        <Button key={option} type="button" onClick={() => onClick(option)}>
+          {option}
+        </Button>
+      ))}
     </div>
   );
 };
 
 FeedBack.propTypes = {
   onClick: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

@@ -4,10 +4,11 @@ export const Statistics = ({
   state: { good, neutral, bad },
   total,
   procents,
+  title,
 }) => {
   return (
     <div>
-      <h3>Statistics</h3>
+      <h3>{title}</h3>
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>

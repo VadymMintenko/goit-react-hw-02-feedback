@@ -36,10 +36,13 @@ export class App extends React.Component {
     return (
       <Container>
         <Section title="Pleace leave feedback">
-          <FeedBack onClick={this.changeStatistic} />
-          {totalFeedback === 0 && (
-            <Notification message={'There is no feedback'} />
-          )}
+          <FeedBack
+            onClick={this.changeStatistic}
+            options={['good', 'neutral', 'bad']}
+          />
+        </Section>
+
+        <Section title="Statistics">
           {totalFeedback > 0 && (
             <Statistics
               state={this.state}
@@ -48,6 +51,9 @@ export class App extends React.Component {
             />
           )}
         </Section>
+        {totalFeedback === 0 && (
+          <Notification message={'There is no feedback'} />
+        )}
       </Container>
     );
   }
